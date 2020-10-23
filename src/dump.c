@@ -80,12 +80,13 @@ static void process_file(int fd, size_t width)
     sprintf(position_format, "%%%ldld", width);
     position = 0;
     
-    do {
+    do 
+    {
         uint8_t byte;
 
         size = dc_read(fd, &byte, 1);
 
-        if (size > 0)
+        if(size > 0)
         {
             display(position, position_format, byte);
             position++;
