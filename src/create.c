@@ -19,7 +19,6 @@
 #include <dc/fcntl.h>
 #include <dc/unistd.h>
 #include <fcntl.h>
-#include <inttypes.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -72,11 +71,16 @@ static void process_file(int fd)
         
         if(size > 0 && size != (ssize_t)BINARY_STRING_SIZE)
         {
-            fprintf(stderr, "read %zd bytes, expected: %ld\n", size, BINARY_STRING_SIZE);
-            exit(EXIT_FAILURE);
+            if(binary_string[0] != '\n')
+            {
+                fprintf(stderr, "read %zd bytes, expected: %ld\n", size, BINARY_STRING_SIZE);
+                exit(EXIT_FAILURE);
+            }
+
+            binary_string[0] = '\0';
         }
         
-        if(size > 0)
+        if(size == BINARY_STRING_SIZE)
         {
             binary_string[BINARY_STRING_SIZE] = '\0';
             from_printable_binary(binary_string, bits);
@@ -85,6 +89,4 @@ static void process_file(int fd)
         }
     }
     while(size > 0); // 0 is end of file
-
-    printf("\n");
 }
