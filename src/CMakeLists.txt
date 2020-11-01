@@ -19,18 +19,6 @@ if(LIBM)
   target_link_libraries(dcdump ${LIBM})
 endif()
 
-find_library(LIBDL dl)
-if(LIBDL)
-  target_link_libraries(dcdump ${LIBDL})
-  target_link_libraries(dccreate ${LIBDL})
-endif()
-
-find_library(LIBRT rt)
-if(LIBRT)
-  target_link_libraries(dcdump ${LIBRT})
-  target_link_libraries(dccreate ${LIBRT})
-endif()
-
 target_compile_options(dcdump PRIVATE -Wpedantic -Wall -Wextra)
 target_compile_options(dccreate PRIVATE -Wpedantic -Wall -Wextra)
 
