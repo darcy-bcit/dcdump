@@ -66,7 +66,7 @@ int main(int argc, const char *argv[])
     return EXIT_SUCCESS;
 }
 
-size_t number_of_digits(const off_t value)
+static size_t number_of_digits(const off_t value)
 {
     return value > 0 ? (size_t)log10((double)value) + 1 : 1;
 }
@@ -77,7 +77,7 @@ static void process_file(int fd, size_t width)
     ssize_t size;
     char position_format[1 + width + 2 + 1]; // eg:"%10ld\0"
     
-    sprintf(position_format, "%%%ldld", width);
+    sprintf(position_format, "%%%ld", width);
     position = 0;
     
     do 
