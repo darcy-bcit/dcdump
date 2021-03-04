@@ -3,7 +3,7 @@
 
 
 /*
- * Copyright 2020 D'Arcy Smith + the BCIT CST Datacommunications Option students.
+ * Copyright 2020-2021 D'Arcy Smith + the BCIT CST Datacommunications Option students.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.

@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 D'Arcy Smith + the BCIT CST Datacommunications Option students.
+ * Copyright 2020-2021 D'Arcy Smith + the BCIT CST Datacommunications Option students.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,6 +47,7 @@ void to_binary(uint8_t val, bool bits[8])
     bits[7] = get_bit_value(val, MASK_00000001);
 }
 
+
 static bool get_bit_value(uint8_t byte, uint8_t mask)
 {
     uint8_t masked;
@@ -66,22 +67,28 @@ static bool get_bit_value(uint8_t byte, uint8_t mask)
     return bit;
 }
 
+
 void to_printable_binary(const bool bits[8], char printable[9])
 {
     for(size_t i = 0; i < 8; i++)
     {
+        char bit;
+
         if(bits[i])
         {
-            printable[i] = '1';
+            bit = '1';
         }
         else
         {
-            printable[i] = '0';
+            bit = '0';
         }
+
+        printable[i] = bit;
     }
     
     printable[8] = '\0';
 }
+
 
 void from_printable_binary(const char printable[9], bool bits[8])
 {
@@ -90,6 +97,7 @@ void from_printable_binary(const char printable[9], bool bits[8])
         set_bit(i, printable, bits);
     }
 }
+
 
 static void set_bit(size_t position, const char printable[9], bool bits[8])
 {
